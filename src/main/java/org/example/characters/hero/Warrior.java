@@ -1,82 +1,86 @@
 package org.example.characters.hero;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.example.characters.DamageType;
-import org.example.characters.enemy.Enemy;
+import static org.example.characters.actions.DamageType.PHYSICAL;
 
 import java.util.Random;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.SneakyThrows;
+import org.example.characters.actions.Attack;
+import org.example.characters.actions.DamageType;
+import org.example.characters.enemy.Enemy;
 
 @Getter
 @Setter
 public class Warrior extends Hero {
-    public Warrior(String name, double health, double manaPoint, double attack, double defence, double magicAttack,
-                   double magicDefence, double criticalPowerCoefficient, double evasion, double criticalHitChance) {
-        super(name, health, manaPoint, attack, defence, magicAttack, magicDefence, criticalPowerCoefficient, evasion, criticalHitChance);
+
+  private static double chaosChance = 15.0;
+  private Random random = new Random();
+
+  public Warrior(String name, double health, double manaPoint, double attack, double defence,
+      double magicAttack,
+      double magicDefence, double criticalPowerCoefficient, double evasion,
+      double criticalHitChance) {
+    super(name, health, manaPoint, attack, defence, magicAttack, magicDefence,
+        criticalPowerCoefficient, evasion, criticalHitChance);
+  }
+
+  public static Warrior buildDefaultWarrior() {
+    return new Warrior("Grin", 100, 100, 1000, 10, 10, 25, 2, 10, 15);
+  }
+
+
+  @Override
+  public void attack(Enemy target) {
+    Attack attackDamage = getAttackDamage();
+    target.defend(attackDamage);
+  }
+
+  @Override
+  @SneakyThrows
+  public void defend(Attack attack) {
+    if (!this.isEvaded()) {
+      double receivedDamage = 0;
+      switch (attack.getDamageType()) {
+        case PHYSICAL:
+          receivedDamage = attack.getDamage() - this.getDefence();
+          break;
+        case MAGICAL:
+          receivedDamage = attack.getDamage() - this.getMagicDefence();
+          break;
+      }
+      this.health -= receivedDamage;
+      System.out.println("Hero received " + receivedDamage + " damage");
+      Thread.sleep(100);
     }
+  }
 
-    Warrior warrior = new Warrior("Warrior", 1000, 200, 150, 80,
-            50, 100, 3, 15, 30);
-
-    @Override
-    protected void attack(Hero hero, Enemy target) {
-        calculateDamage(hero,DamageType.MAGICAL,target);
-        calculateDamage(hero,DamageType.PHYSICAL,target);
+  @Override
+  public boolean isEvaded() {
+    Random random = new Random();
+    int rnd = random.nextInt(100);
+    if (rnd < this.evasion) {
+      System.out.println("Вы увернулись от удара");
+      return true;
     }
-
-    @Override
-    protected void defend(Hero hero, Enemy target) {
-        calculateDefend(hero,DamageType.MAGICAL,target);
-        calculateDefend(hero,DamageType.PHYSICAL,target);
+    return false;
+  }
 
 
+  public Attack getAttackDamage() {
+    return new Attack((int)this.getBaseAttack(), PHYSICAL);
+  }
+
+  private double calculateDefend(Hero hero, DamageType type, Enemy enemy) {
+    double damage = 0;
+    switch (type) {
+      case MAGICAL: {
+
+      }
+      case PHYSICAL: {
+
+      }
     }
-
-
-    @Override
-    public boolean isEvaded() {
-        Random random = new Random();
-        int rnd = random.nextInt(100);
-        if (rnd < this.evasion) {
-            System.out.println("Вы увернулись от удара");
-            return true;
-        }
-        return false;
-    }
-
-
-    private double calculateDamage(Hero hero, DamageType type, Enemy enemy) {
-        double damage = 0;
-        switch (type) {
-            case MAGICAL: {
-                if (!(isEvaded())) {
-                    damage = hero.magicAttack - enemy.magicDefence;
-                    enemy.health = enemy.health - damage;
-                    System.out.println("Вы нанесли " + damage + " урона");
-                    break;
-                }
-            }
-            case PHYSICAL: {
-                if (!(isEvaded())) {
-                    damage = hero.attack - enemy.defence;
-                    enemy.health = enemy.health - damage;
-                    System.out.println("Вы нанесли " + damage + " урона");
-                    break;
-                }
-            }
-        }
-        return damage;
-    }
-    private double calculateDefend(Hero hero, DamageType type, Enemy enemy){
-        double damage = 0;
-        switch (type){
-            case MAGICAL:{
-
-            }
-            case PHYSICAL:{
-
-            }
-        }
-        return damage;
-    }
+    return damage;
+  }
 }

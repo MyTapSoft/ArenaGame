@@ -4,21 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.characters.Character;
-import org.example.characters.DamageType;
+import org.example.characters.actions.Attack;
 import org.example.characters.enemy.Enemy;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public abstract class Hero extends Character {
 
-    public Hero(String name, double health, double manaPoint, double attack, double defence, double magicAttack, double magicDefence, double criticalPowerCoefficient, double evasion, double criticalHitChance) {
-        super(name, health, manaPoint, attack, defence, magicAttack, magicDefence, criticalPowerCoefficient, evasion, criticalHitChance);
+
+    public Hero(String name, double health, double manaPoint, double baseAttack, double defence,
+        double magicAttack, double magicDefence, double criticalPowerCoefficient, double evasion,
+        double criticalHitChance) {
+        super(name, health, manaPoint, baseAttack, defence, magicAttack, magicDefence,
+            criticalPowerCoefficient, evasion, criticalHitChance);
     }
 
     public abstract boolean isEvaded();
 
-    protected abstract void attack(Hero hero, Enemy target);
+    public abstract void attack(Enemy target);
 
-    protected abstract void defend(Hero hero, Enemy target);
+    public abstract void defend(Attack attack);
 }
