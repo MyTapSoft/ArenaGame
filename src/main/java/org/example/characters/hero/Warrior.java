@@ -26,7 +26,7 @@ public class Warrior extends Hero {
   }
 
   public static Warrior buildDefaultWarrior() {
-    return new Warrior("Grin", 100, 100, 1000, 10, 10, 25, 2, 10, 15);
+    return new Warrior("Grin", 300, 100, 50, 80, 10, 25, 2, 10, 15);
   }
 
 
@@ -71,16 +71,4 @@ public class Warrior extends Hero {
     return new Attack((int)this.getBaseAttack(), PHYSICAL);
   }
 
-  private double calculateDefend(Hero hero, DamageType type, Enemy enemy) {
-    double damage = 0;
-    switch (type) {
-      case MAGICAL: {
-
-      }
-      case PHYSICAL: {
-
-      }
-    }
-    return damage;
-  }
 }
