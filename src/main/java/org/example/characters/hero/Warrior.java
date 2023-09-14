@@ -7,14 +7,14 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import org.example.characters.actions.Attack;
-import org.example.characters.actions.DamageType;
 import org.example.characters.enemy.Enemy;
 
 @Getter
 @Setter
 public class Warrior extends Hero {
 
-  private static double chaosChance = 15.0;
+  private static double maxChaosChance = 1.15;
+  private static double minChaosChance = 0.85;
   private Random random = new Random();
 
   public Warrior(String name, double health, double manaPoint, double attack, double defence,
@@ -57,7 +57,6 @@ public class Warrior extends Hero {
 
   @Override
   public boolean isEvaded() {
-    Random random = new Random();
     int rnd = random.nextInt(100);
     if (rnd < this.evasion) {
       System.out.println("Вы увернулись от удара");
@@ -68,7 +67,9 @@ public class Warrior extends Hero {
 
 
   public Attack getAttackDamage() {
-    return new Attack((int)this.getBaseAttack(), PHYSICAL);
+    double max = this.getBaseAttack() * maxChaosChance;
+    double min = this.getBaseAttack() * minChaosChance;
+    double damage = min + (max - min) * random.nextDouble();
+    return new Attack((int)damage, PHYSICAL);
   }
-
 }
