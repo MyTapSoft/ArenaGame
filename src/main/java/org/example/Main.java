@@ -10,15 +10,24 @@ public class Main {
     public static void main(String[] args) {
         Hero hero = Warrior.buildDefaultWarrior();
         Enemy enemy = DarkOrc.buildDefaultOrc();
-
-        while (hero.getHealth() > 0 && enemy.getHealth() > 0) {
+        double currentHP;
+        while (true) {
             hero.attack(enemy);
             enemy.attack(hero);
-            if (hero.getHealth() == 0 || hero.getHealth() < 0) {
-                System.out.println("!!!Герой проиграл!!!");
-            } else if (enemy.getHealth() == 0 || enemy.getHealth() < 0) {
-                System.out.println("!!!Герой выиграл!!!");
+            if (enemy.getHealth() < 0 || enemy.getHealth() == 0) {
+                currentHP = hero.getHealth();
+                if (currentHP > 0) {
+                    System.out.println("!!!НОВЫЙ ПРОТИВНИК!!!");
+                    hero.attack(DarkOrc.buildDefaultOrc());
+                    System.out.println("!!!ПОБЕДА!!!");
+                    System.out.println("!!!ЕЩЕ ОДИН ОРК ПОВЕРЖЕН!!!");
+                }
+                if (currentHP < 0 || currentHP == 0) {
+                    System.out.println("!!!ГЕРОЙ ПОВЕРЖЕН!!!");
+                    break;
+                }
             }
+
         }
     }
 }

@@ -22,7 +22,7 @@ public class DarkOrc extends Enemy {
   }
 
   public static DarkOrc buildDefaultOrc() {
-    return new DarkOrc("Org", 600, 10, 100, 20, 2, 2, 1, 10, 2);
+    return new DarkOrc("Org", 100, 10, 100, 20, 2, 2, 1, 10, 2);
   }
 
   @Override
