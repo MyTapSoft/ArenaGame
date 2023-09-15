@@ -50,7 +50,12 @@ public class DarkOrc extends Enemy {
   }
 
   private boolean isEvaded() {
-    return new Random().nextBoolean();
+    int rnd = random.nextInt(100);
+    if (rnd < this.evasion) {
+      System.out.println("Вы увернулись от удара");
+      return true;
+    }
+    return false;
   }
 
   public Attack getAttackDamage() {
