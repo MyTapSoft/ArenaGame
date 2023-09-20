@@ -1,16 +1,11 @@
 package org.example.characters.location;
 
+import java.util.List;
 import org.example.characters.hero.Hero;
 import org.example.ui.UserInputHandler;
 
 
-public class DefaultLocation {
-
-  private final Hospital hospital;
-
-  public DefaultLocation(Hospital hospital) {
-    this.hospital = hospital;
-  }
+public class DefaultLocation extends Location {
 
   public void intersection(Hero hero) {
     System.out.println("Добро пожаловать на главную площадь!\n" +
@@ -21,7 +16,7 @@ public class DefaultLocation {
         "    4 - Магазин.\n" +
         "    exit - выйти из игры. \n" +
         "    (для перехода введите соответствующую цифру в консоль)");
-   String consoleRead = UserInputHandler.getUserInput();
+    String consoleRead = UserInputHandler.getUserInput();
     while (!consoleRead.equals("exit")) {
 
       switch (consoleRead) {
@@ -44,16 +39,29 @@ public class DefaultLocation {
         }
         case "3" -> {
           System.out.println("Добро пожаловать в Тренировочный зал");
-
         }
         case "4" -> {
           System.out.println("Добро пожаловать в Магазин");
-
         }
         default -> {
           System.out.println("Unknown location");
         }
       }
     }
+  }
+
+  @Override
+  public String getLocationName() {
+    return "Main Hall";
+  }
+
+  @Override
+  public String getLocationId() {
+    return "1";
+  }
+
+  @Override
+  public List<String> getPaths() {
+    return List.of("1", "2", "3");
   }
 }

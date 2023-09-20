@@ -9,6 +9,7 @@ import org.example.characters.enemy.Enemy;
 import org.example.characters.enemy.impl.DarkOrc;
 import org.example.characters.hero.Hero;
 import org.example.characters.hero.HeroBuilder;
+import org.example.characters.location.Arena;
 import org.example.characters.location.DefaultLocation;
 import org.example.characters.location.Hospital;
 
@@ -20,23 +21,21 @@ public class GameStarter {
   private HeroBuilder heroBuilder;
   private DefaultLocation mainHall;
   private Hospital hospital;
+  private Arena arena;
   double maxHeroHP;
   double maxHeroManaPoint;
 
   public GameStarter() {
+    arena = new Arena();
     hospital = new Hospital();
     heroBuilder = new HeroBuilder();
-    mainHall = new DefaultLocation(hospital);
+    mainHall = new DefaultLocation();
   }
 
 
   public void start() {
     System.out.println("Welcome to Arena game");
     Hero hero = heroBuilder.generateHero();
-    maxHeroHP = hero.getCurrentHp();
-    maxHeroManaPoint = hero.getCurrentMp();
-    mainHall.intersection(hero);
-    Enemy enemy = DarkOrc.buildDefaultOrc();
     while (hero.getCurrentHp() > 0) {
       hero.attack(enemy);
       enemy.attack(hero);
