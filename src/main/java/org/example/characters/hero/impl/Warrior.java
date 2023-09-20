@@ -21,13 +21,13 @@ public class Warrior extends Hero {
   public Warrior(String name, double health, double manaPoint, double attack, double defence,
       double magicAttack,
       double magicDefence, double criticalPowerCoefficient, double evasion,
-      double criticalHitChance) {
+      double criticalHitChance, double EXPcount, double SPcount) {
     super(name, health, manaPoint, attack, defence, magicAttack, magicDefence,
-        criticalPowerCoefficient, evasion, criticalHitChance);
+        criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount);
   }
 
   public static Warrior buildDefaultWarrior() {
-    return new Warrior("Grin", 300, 100, 50, 80, 10, 25, 2, 10, 15);
+    return new Warrior("Grin", 300, 100, 50, 80, 10, 25, 2, 10, 15, 0, 0);
   }
 
 

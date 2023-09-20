@@ -12,9 +12,9 @@ public abstract class Enemy extends Character {
 
   public Enemy(String name, double health, double manaPoint, double attack, double defence,
       double magicAttack, double magicDefence, double criticalPowerCoefficient, double evasion,
-      double criticalHitChance) {
+      double criticalHitChance, double EXPcount, double SPcount) {
     super(name, health, manaPoint, attack, defence, magicAttack, magicDefence,
-        criticalPowerCoefficient, evasion, criticalHitChance);
+        criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount);
   }
 
   public abstract void attack(Hero target);

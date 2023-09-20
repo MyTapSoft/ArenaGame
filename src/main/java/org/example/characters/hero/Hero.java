@@ -14,9 +14,9 @@ public abstract class Hero extends Character {
 
     public Hero(String name, double health, double manaPoint, double baseAttack, double defence,
         double magicAttack, double magicDefence, double criticalPowerCoefficient, double evasion,
-        double criticalHitChance) {
+        double criticalHitChance, double EXPcount, double SPcount) {
         super(name, health, manaPoint, baseAttack, defence, magicAttack, magicDefence,
-            criticalPowerCoefficient, evasion, criticalHitChance);
+            criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount);
     }
 
     public abstract boolean isEvaded();

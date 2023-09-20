@@ -17,13 +17,13 @@ public class DarkOrc extends Enemy {
 
   public DarkOrc(String name, double health, double manaPoint, double attack, double defence,
       double magicAttack, double magicDefence, double criticalPowerCoefficient, double evasion,
-      double criticalHitChance) {
+      double criticalHitChance, double EXPcount, double SPcount) {
     super(name, health, manaPoint, attack, defence, magicAttack, magicDefence,
-        criticalPowerCoefficient, evasion, criticalHitChance);
+        criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount);
   }
 
   public static DarkOrc buildDefaultOrc() {
-    return new DarkOrc("Org", 100, 10, 100, 20, 2, 2, 1, 10, 2);
+    return new DarkOrc("Org", 100, 10, 100, 20, 2, 2, 1, 10, 2,100,20);
   }
 
   @Override

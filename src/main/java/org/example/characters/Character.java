@@ -18,5 +18,7 @@ public abstract class Character {
     public double criticalPowerCoefficient;
     public double evasion;
     public double criticalHitChance;
+    public double EXPcount;
+    public double SPcount;
 
 }
