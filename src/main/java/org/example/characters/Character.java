@@ -9,8 +9,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public abstract class Character {
     public String name;
-    public double health;
-    public double manaPoint;
+    public double currentHp;
+    public double maxHp;
+    public double currentMp;
+    public double maxMp;
     public double baseAttack;
     public double defence;
     public double magicAttack;
@@ -20,5 +22,4 @@ public abstract class Character {
     public double criticalHitChance;
     public double EXPcount;
     public double SPcount;
-
 }

@@ -10,10 +10,12 @@ import org.example.characters.hero.Hero;
 @Setter
 public abstract class Enemy extends Character {
 
-  public Enemy(String name, double health, double manaPoint, double attack, double defence,
-      double magicAttack, double magicDefence, double criticalPowerCoefficient, double evasion,
-      double criticalHitChance, double EXPcount, double SPcount) {
-    super(name, health, manaPoint, attack, defence, magicAttack, magicDefence,
+
+  public Enemy(String name, double currentHp, double maxHp, double currentMp, double maxMp,
+      double baseAttack, double defence, double magicAttack, double magicDefence,
+      double criticalPowerCoefficient, double evasion, double criticalHitChance, double EXPcount,
+      double SPcount) {
+    super(name, currentHp, maxHp, currentMp, maxMp, baseAttack, defence, magicAttack, magicDefence,
         criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount);
   }
 

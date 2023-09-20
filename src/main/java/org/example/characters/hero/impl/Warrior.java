@@ -18,16 +18,17 @@ public class Warrior extends Hero {
   private static double minChaosChance = 0.85;
   private Random random = new Random();
 
-  public Warrior(String name, double health, double manaPoint, double attack, double defence,
-      double magicAttack,
-      double magicDefence, double criticalPowerCoefficient, double evasion,
-      double criticalHitChance, double EXPcount, double SPcount) {
-    super(name, health, manaPoint, attack, defence, magicAttack, magicDefence,
+  public Warrior(String name, double currentHp, double maxHp, double currentMp, double maxMp,
+      double baseAttack, double defence, double magicAttack, double magicDefence,
+      double criticalPowerCoefficient, double evasion, double criticalHitChance, double EXPcount,
+      double SPcount) {
+    super(name, currentHp, maxHp, currentMp, maxMp, baseAttack, defence, magicAttack, magicDefence,
         criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount);
   }
 
+
   public static Warrior buildDefaultWarrior() {
-    return new Warrior("Grin", 300, 100, 50, 80, 10, 25, 2, 10, 15, 0, 0);
+    return new Warrior("Grin", 300, 300,100, 100,50, 80, 10, 25, 2, 10, 15, 0, 0);
   }
 
 
@@ -50,7 +51,7 @@ public class Warrior extends Hero {
           receivedDamage = attack.getDamage() - this.getMagicDefence();
           break;
       }
-      this.health -= receivedDamage;
+      this.currentHp -= receivedDamage;
       System.out.println("Hero received " + receivedDamage + " damage");
       Thread.sleep(100);
     }

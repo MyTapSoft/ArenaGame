@@ -15,15 +15,17 @@ public class DarkOrc extends Enemy {
 
   private final Random random = new Random();
 
-  public DarkOrc(String name, double health, double manaPoint, double attack, double defence,
-      double magicAttack, double magicDefence, double criticalPowerCoefficient, double evasion,
-      double criticalHitChance, double EXPcount, double SPcount) {
-    super(name, health, manaPoint, attack, defence, magicAttack, magicDefence,
+  public DarkOrc(String name, double currentHp, double maxHp, double currentMp, double maxMp,
+      double baseAttack, double defence, double magicAttack, double magicDefence,
+      double criticalPowerCoefficient, double evasion, double criticalHitChance, double EXPcount,
+      double SPcount) {
+    super(name, currentHp, maxHp, currentMp, maxMp, baseAttack, defence, magicAttack, magicDefence,
         criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount);
   }
 
+
   public static DarkOrc buildDefaultOrc() {
-    return new DarkOrc("Org", 100, 10, 100, 20, 2, 2, 1, 10, 2,100,20);
+    return new DarkOrc("Org", 100, 100,10, 10,100, 20, 2, 2, 1, 10, 2,100,20);
   }
 
   @Override
@@ -41,7 +43,7 @@ public class DarkOrc extends Enemy {
         case PHYSICAL -> receivedDamage = attack.getDamage() - this.getDefence();
         case MAGICAL -> receivedDamage = attack.getDamage() - this.getMagicDefence();
       }
-      this.health -= receivedDamage;
+      this.currentHp -= receivedDamage;
       System.out.println("Orc received " + receivedDamage + " damage");
       Thread.sleep(100);
     } else {
