@@ -2,6 +2,7 @@ package org.example.characters.hero;
 
 import lombok.Data;
 import org.example.characters.hero.impl.Warrior;
+import org.example.characters.location.Location;
 import org.example.ui.UserInputHandler;
 
 @Data

@@ -9,6 +9,8 @@ import lombok.SneakyThrows;
 import org.example.characters.actions.Attack;
 import org.example.characters.enemy.Enemy;
 import org.example.characters.hero.Hero;
+import org.example.characters.location.AbstractLocation;
+import org.example.characters.location.Location;
 
 @Getter
 @Setter
@@ -21,14 +23,14 @@ public class Warrior extends Hero {
   public Warrior(String name, double currentHp, double maxHp, double currentMp, double maxMp,
       double baseAttack, double defence, double magicAttack, double magicDefence,
       double criticalPowerCoefficient, double evasion, double criticalHitChance, double EXPcount,
-      double SPcount) {
+      double SPcount, AbstractLocation currentLocation) {
     super(name, currentHp, maxHp, currentMp, maxMp, baseAttack, defence, magicAttack, magicDefence,
-        criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount);
+        criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount, currentLocation);
   }
 
 
   public static Warrior buildDefaultWarrior() {
-    return new Warrior("Grin", 300, 300,100, 100,50, 80, 10, 25, 2, 10, 15, 0, 0);
+    return new Warrior("Grin", 300, 300,100, 100,50, 80, 10, 25, 2, 10, 15, 0, 0, Location.getLocationById("1"));
   }
 
 

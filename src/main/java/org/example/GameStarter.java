@@ -9,9 +9,6 @@ import org.example.characters.enemy.Enemy;
 import org.example.characters.enemy.impl.DarkOrc;
 import org.example.characters.hero.Hero;
 import org.example.characters.hero.HeroBuilder;
-import org.example.characters.location.Arena;
-import org.example.characters.location.DefaultLocation;
-import org.example.characters.location.Hospital;
 
 @AllArgsConstructor
 @Getter
@@ -19,17 +16,11 @@ import org.example.characters.location.Hospital;
 public class GameStarter {
 
   private HeroBuilder heroBuilder;
-  private DefaultLocation mainHall;
-  private Hospital hospital;
-  private Arena arena;
   double maxHeroHP;
   double maxHeroManaPoint;
 
   public GameStarter() {
-    arena = new Arena();
-    hospital = new Hospital();
     heroBuilder = new HeroBuilder();
-    mainHall = new DefaultLocation();
   }
 
 
@@ -37,11 +28,9 @@ public class GameStarter {
     System.out.println("Welcome to Arena game");
     Hero hero = heroBuilder.generateHero();
     while (hero.getCurrentHp() > 0) {
-      hero.attack(enemy);
-      enemy.attack(hero);
-      enemy = generateNewEnemyIfNeeded(enemy);
+      hero.getCurrentLocation().interact(hero);
     }
-    System.out.println("Поражение!");
+    System.out.println("Finito!");
   }
 
   private Enemy generateNewEnemyIfNeeded(Enemy enemy) {
