@@ -7,7 +7,6 @@ import org.example.characters.hero.Hero;
 import org.example.ui.UserInputHandler;
 
 public class Arena extends AbstractLocation {
-
     public void acquireExperience(Hero hero, Enemy enemy){
         double exp = enemy.getEXPcount();
         double heroExp = hero.getEXPcount();
@@ -71,9 +70,7 @@ public class Arena extends AbstractLocation {
                         break;
                     }
                 }
-                System.out.println("Unknown location...");
             }
         }
-        hero.getCurrentLocation().interact(hero);
     }
 }

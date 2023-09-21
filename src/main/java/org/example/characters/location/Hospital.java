@@ -53,10 +53,8 @@ public class Hospital extends AbstractLocation {
             break;
           }
         }
-        System.out.println("Unknown location...");
       }
     }
-    hero.getCurrentLocation().interact(hero);
   }
 
   private void fullHeal(Hero hero) {

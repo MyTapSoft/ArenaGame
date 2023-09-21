@@ -53,6 +53,5 @@ public class DefaultLocation extends AbstractLocation {
         System.out.println("Unknown location...");
       }
     }
-    hero.getCurrentLocation().interact(hero);
   }
 }
