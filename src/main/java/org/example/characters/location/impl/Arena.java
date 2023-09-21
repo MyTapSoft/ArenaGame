@@ -1,9 +1,11 @@
-package org.example.characters.location;
+package org.example.characters.location.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.example.characters.enemy.Enemy;
 import org.example.characters.hero.Hero;
+import org.example.characters.location.AbstractLocation;
+import org.example.characters.location.Location;
 import org.example.ui.UserInputHandler;
 
 public class Arena extends AbstractLocation {
@@ -22,7 +24,6 @@ public class Arena extends AbstractLocation {
     }
 
     public void startFight(){
-        System.out.println("Fight done");
     }
 
     @Override

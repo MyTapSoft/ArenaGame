@@ -2,6 +2,9 @@ package org.example.characters.location;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.example.characters.location.impl.Arena;
+import org.example.characters.location.impl.DefaultLocation;
+import org.example.characters.location.impl.Hospital;
 
 public class Location {
 
