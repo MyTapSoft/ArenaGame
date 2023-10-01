@@ -22,4 +22,5 @@ public abstract class Enemy extends Character {
   public abstract void attack(Hero target);
 
   public abstract void defend(Attack attack);
+
 }

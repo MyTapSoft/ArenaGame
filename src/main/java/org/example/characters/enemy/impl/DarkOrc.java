@@ -47,7 +47,7 @@ public class DarkOrc extends Enemy {
       System.out.println("Orc received " + receivedDamage + " damage");
       Thread.sleep(100);
     } else {
-      System.out.println("Enemy evaded");
+      System.out.println("Dark orc увернулся от атаки");
     }
   }
 
@@ -66,6 +66,7 @@ public class DarkOrc extends Enemy {
     double damage = min + (max - min) * random.nextDouble();
     return new Attack((int) damage, PHYSICAL);
   }
+
 }
 
 

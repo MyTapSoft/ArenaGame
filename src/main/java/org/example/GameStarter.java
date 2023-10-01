@@ -33,7 +33,7 @@ public class GameStarter {
     System.out.println("Finito!");
   }
 
-  private Enemy generateNewEnemyIfNeeded(Enemy enemy) {
+  public Enemy generateNewEnemyIfNeeded(Enemy enemy) {
     if (enemy.getCurrentHp() <= 0) {
       System.out.println("Орк повержен!");
       System.out.println("На арене появляется новый противник!");
@@ -41,13 +41,5 @@ public class GameStarter {
     } else {
       return enemy;
     }
-  }
-
-  @SneakyThrows
-  public String readLineFromConsole() {
-    String result = null;
-    Scanner sc = new Scanner(System.in);
-    result = sc.nextLine();
-    return result;
   }
 }
