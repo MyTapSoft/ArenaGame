@@ -1,5 +1,6 @@
 package org.example.characters.enemy;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.characters.Character;
@@ -16,7 +17,7 @@ public abstract class Enemy extends Character {
       double criticalPowerCoefficient, double evasion, double criticalHitChance, double EXPcount,
       double SPcount) {
     super(name, currentHp, maxHp, currentMp, maxMp, baseAttack, defence, magicAttack, magicDefence,
-        criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount);
+        criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount, List.of());
   }
 
   public abstract void attack(Hero target);
