@@ -101,6 +101,8 @@ public class Arena extends AbstractLocation {
           String userChoice = UserInputHandler.getUserInput();
           Skill skill = hero.getSkills().get(Integer.parseInt(userChoice));
           skill.use(hero);
+          skill.use(hero, enemy);
+          enemy.attack(hero);
         }
         hero.decreaseCooldownIfNeeded();
       }

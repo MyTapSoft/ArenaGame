@@ -8,6 +8,7 @@ import org.example.characters.actions.Attack;
 import org.example.characters.enemy.Enemy;
 import org.example.characters.location.AbstractLocation;
 import org.example.characters.skills.PowerShield;
+import org.example.characters.skills.PowerStrike;
 
 @Getter
 @Setter
@@ -20,7 +21,7 @@ public abstract class Hero extends Character {
       double criticalPowerCoefficient, double evasion, double criticalHitChance, double EXPcount,
       double SPcount, AbstractLocation currentLocation) {
     super(name, currentHp, maxHp, currentMp, maxMp, baseAttack, defence, magicAttack, magicDefence,
-        criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount, List.of(new PowerShield()));
+        criticalPowerCoefficient, evasion, criticalHitChance, EXPcount, SPcount, List.of(new PowerShield(), new PowerStrike()));
     this.currentLocation = currentLocation;
   }
 

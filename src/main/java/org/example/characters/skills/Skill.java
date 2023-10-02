@@ -2,6 +2,8 @@ package org.example.characters.skills;
 
 import lombok.Data;
 import org.example.characters.Character;
+import org.example.characters.enemy.Enemy;
+
 @Data
 public abstract class Skill {
 
@@ -12,6 +14,7 @@ public abstract class Skill {
   protected int currentDuration;
 
   public abstract void use(Character character);
+  public abstract void use(Character character, Enemy enemy);
 
   public void decreaseCooldown() {
     if (cooldown > 0) {
