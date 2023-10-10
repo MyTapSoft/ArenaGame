@@ -111,7 +111,7 @@ public class Arena extends AbstractLocation {
 
   @Override
   public String getLocationName() {
-    return "Arena";
+    return "Арена.";
   }
 
   @Override

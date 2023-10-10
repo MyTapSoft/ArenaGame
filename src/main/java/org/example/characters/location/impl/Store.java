@@ -1,31 +1,32 @@
 package org.example.characters.location.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.example.characters.hero.Hero;
 import org.example.characters.location.AbstractLocation;
 import org.example.characters.location.Location;
+import org.example.ui.DialoguesAndMessages;
 import org.example.ui.UserInputHandler;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class DefaultLocation extends AbstractLocation {
+public class Store extends AbstractLocation {
+    DialoguesAndMessages diam = new DialoguesAndMessages();
 
     @Override
     public String getLocationName() {
-        return "Главный зал.";
+        return "Магазин.";
     }
 
     @Override
     public String getLocationId() {
-        return "1";
+        return "4";
     }
 
     @Override
     public List<AbstractLocation> getPaths() {
         List<AbstractLocation> possibleMoves = new ArrayList<>();
         for (AbstractLocation location : Location.getAllLocations()) {
-            if (location.getLocationId().equals("2") || location.getLocationId().equals("3")|| location.getLocationId().equals("4")) {
+            if (location.getLocationId().equals("1")) {
                 possibleMoves.add(location);
             }
         }
@@ -35,13 +36,19 @@ public class DefaultLocation extends AbstractLocation {
     @Override
     public void interact(Hero hero) {
         boolean isLocationChanged = false;
+        System.out.println("Добро пожаловать в магазин. Здесь вы можете приобрести товары первой необходимости.");
+        diam.storeFirst();
         while (!isLocationChanged) {
-            System.out.println("Вы на главной площади");
-            System.out.println("Что делаем?");
-            System.out.println("1 - Уходим");
+
             String answer = UserInputHandler.getUserInput();
             if (answer.equalsIgnoreCase("1")) {
-                System.out.println("Куда?");
+
+            } else if (answer.equalsIgnoreCase("2")) {
+
+            } else if (answer.equalsIgnoreCase("3")) {
+
+            } else if (answer.equalsIgnoreCase("4")) {
+                System.out.println("Куда пойдем?");
                 for (AbstractLocation path : getPaths()) {
                     System.out.println(path.getLocationId() + ": " + path.getLocationName());
                 }
@@ -53,8 +60,7 @@ public class DefaultLocation extends AbstractLocation {
                         break;
                     }
                 }
-
-            } else System.out.println("Неизвестное место назначения...");
+            }
         }
     }
 }
